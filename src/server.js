@@ -7,8 +7,7 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-import api from "./api/client/routes";
-import adminApi from "./api/admin/routes";
+import api from "./api/routes";
 
 const app = express();
 app.set("port", process.env.PORT || 8081);
@@ -20,7 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(`/api/${app.get("apiVersion")}`, api);
-app.use(`/api/${app.get("apiVersion")}/admin`, adminApi);
 
 app.use(morgan("dev"));
 
