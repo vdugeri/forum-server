@@ -4,11 +4,6 @@ import { requiredStringValidator, emailAddressValidator } from "./validators";
 
 const userSchema = mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: [true, "Username cannot be blank"],
-      validate: requiredStringValidator
-    },
     password: {
       type: String,
       required: [true, "Password cannot be blank"],

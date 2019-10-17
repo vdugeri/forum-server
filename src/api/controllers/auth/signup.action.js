@@ -2,10 +2,9 @@ import User from "../../models/user.model";
 import { generateToken } from "../../utils/tokens";
 
 const signUp = async (req, res) => {
-  const { username, password, firstName, lastName, emailAddress } = req.body;
+  const { password, firstName, lastName, emailAddress } = req.body;
   try {
     const user = new User({
-      username,
       password,
       firstName,
       lastName,

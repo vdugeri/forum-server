@@ -2,9 +2,9 @@ import User from "../../models/user.model";
 import { generateToken } from "../../utils/tokens";
 
 const login = async (req, res) => {
-  const { username, password } = req.body;
+  const { emailAddress, password } = req.body;
   try {
-    const user = await User.findOne({ username: { $eq: username } });
+    const user = await User.findOne({ emailAddress: { $eq: emailAddress } });
     if (user) {
       const matched = await user.comparePasswords(password, user.password);
 

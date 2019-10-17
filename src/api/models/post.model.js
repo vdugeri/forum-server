@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { ReplySchema } from "./reply.model";
 import { requiredStringValidator } from "./validators";
 
-const PostSchema = mongoose.Schema({
+export const PostSchema = mongoose.Schema({
   author: {
     type: mongoose.Types.ObjectId,
     ref: "User"
@@ -12,6 +12,10 @@ const PostSchema = mongoose.Schema({
     type: String,
     required: [true, "Post body cannot be blank"],
     validate: requiredStringValidator
+  },
+  topic: {
+    type: mongoose.Types.ObjectId,
+    ref: "Topic"
   },
   title: {
     type: String,
