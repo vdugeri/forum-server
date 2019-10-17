@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import PostModel from "../../models/post.model";
+import PostModel from "./post.model";
 
 class PostDao {
   static async getAllPosts() {

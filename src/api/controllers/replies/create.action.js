@@ -1,28 +1,12 @@
-import mongoose from "mongoose";
-import Reply from "../../models/reply.model";
+import ReplyDao from "./replies.dao";
 
 const createReply = async (req, res) => {
   const { author, text, post } = req.body;
   try {
-    const reply = new Reply({ author, text, post });
-    const errorData = reply.validateSync();
-    if (errorData) {
-      return res.status(400).json({
-        error: true,
-        errors: errorData.errors
-      });
-    }
-
-    await reply.save();
-    return res.status(201).json({
-      success: true,
-      reply
-    });
+    const post = ReplyDao.createReply({ author, text, post });
+    return res.status(201).json({ reply });
   } catch (error) {
-    return res.status(500).json({
-      error: true,
-      message: error.message
-    });
+    return res.status(error.code).json({ message: error.message });
   }
 };
 
