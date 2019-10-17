@@ -1,19 +1,12 @@
-import mongoose from "mongoose";
-import Post from "../../models/post.model";
+import PostDao from "./posts.dao";
 
 const getUserPosts = async (req, res) => {
   const { userId } = req.params.userId;
   try {
-    const posts = await Post.find({ author: mongoose.Types.ObjectId(userId) });
-    return res.status(200).json({
-      success: true,
-      posts
-    });
+    const posts = await PostDao.userPosts(userId);
+    return res.status(200).json({ posts });
   } catch (error) {
-    return res.status(500).json({
-      error: true,
-      message: error.message
-    });
+    return res.status(error.code).json({ message: error.message });
   }
 };
 
