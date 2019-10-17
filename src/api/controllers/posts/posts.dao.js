@@ -36,9 +36,7 @@ class PostDao {
 
   static async getById(postId) {
     try {
-      const post = await PostModel.findById(
-        mongoose.Types.ObjectId(postId)
-      ).populate("topic author");
+      const post = await PostModel.findById(postId).populate("topic author");
       if (!post) {
         const httpError = new Error("Post not found");
         httpError.code = 404;
@@ -49,7 +47,7 @@ class PostDao {
       return post;
     } catch (error) {
       const httpError = new Error(error.message);
-      httpError.code = 500;
+      httpError.code = error.code || 500;
 
       throw httpError;
     }

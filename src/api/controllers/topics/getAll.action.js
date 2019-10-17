@@ -1,17 +1,11 @@
-import Topic from "../../models/topic.model";
+import TopicDao from "./topic.dao";
 
 const getAllTopics = async (req, res) => {
   try {
-    const topics = await Topic.find();
-    return res.status(200).json({
-      success: true,
-      topics
-    });
+    const topics = await TopicDao.allTopics();
+    return res.status(200).json({ topics });
   } catch (error) {
-    return res.status(500).json({
-      error: true,
-      message: error.message
-    });
+    return res.status(error.code).json({ message: error.message });
   }
 };
 

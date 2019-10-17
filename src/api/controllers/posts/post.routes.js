@@ -6,7 +6,7 @@ import getAllPosts from "./getAll.action";
 const postRoutes = router => {
   router.post("/posts", createPost);
   router.get("/posts", getAllPosts);
-  router.get("/posts/:id", getPost);
+  router.get("/posts/:postId", getPost);
   router.get("/posts/:postId/replies", postReplies);
 };
 
