@@ -1,35 +1,22 @@
-import User from "../users/user.model";
 import { generateToken } from "../utils/tokens";
 
 const login = async (req, res) => {
   const { emailAddress, password } = req.body;
   try {
-    const user = await User.findOne({ emailAddress: { $eq: emailAddress } });
+    const user = UserDao.login({ emailAddress, password });
     if (user) {
-      const matched = await user.comparePasswords(password, user.password);
-
-      if (matched) {
-        const userWithToken = await generateToken(user);
-        res.status(200).json({
-          status: "success",
-          user: userWithToken
-        });
-      } else {
-        res.status(401).json({
-          status: "error",
-          error: "Invalid username or password"
-        });
-      }
+      const userWithToken = await generateToken(user);
+      res.status(200).json({
+        user: userWithToken
+      });
     } else {
-      return res.status(404).json({
-        status: "error",
-        error: "Invalid username or password"
+      return res.status(401).json({
+        message: "Invalid username or password"
       });
     }
   } catch (error) {
     res.status(500).json({
-      status: "error",
-      error: error.message
+      message: error.message
     });
   }
 };
