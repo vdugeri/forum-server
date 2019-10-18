@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { requiredStringValidator } from "./validators";
+import { requiredStringValidator } from "../validators";
 
 const MessageSchema = mongoose.Schema(
   {

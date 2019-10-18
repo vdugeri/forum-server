@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { requiredStringValidator } from "../../models/validators";
+import { requiredStringValidator } from "../validators";
 
 export const ReplySchema = mongoose.Schema({
   author: {

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import User from "../../models/user.model";
+import User from "./user.model";
 
 const getUser = async (req, res) => {
   const { id } = req.params;

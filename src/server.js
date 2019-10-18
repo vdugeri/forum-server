@@ -1,8 +1,8 @@
 import http from "http";
 import logger from "debug";
 
-import app from "../app.js";
-import startDb from "../db";
+import app from "./app.js";
+import startDb from "./db";
 
 const debug = logger("http");
 
