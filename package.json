@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "nodemon --exec babel-node ./src/server.js",
-    "test": "./node_modules/.bin/mocha --require @babel/register test/**/*.js --exit"
+    "start": "nodemon --exec ./node_modules/.bin/babel-node ./src/server.js",
+    "test": "./node_modules/.bin/mocha --require @babel/register test/**/*.js --exit",
+    "build": "yarn"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-node": "^0.0.1-security",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.6",
     "cors": "^2.8.5",
