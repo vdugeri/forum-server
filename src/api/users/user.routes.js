@@ -1,5 +1,5 @@
 import getUser from "./get.action";
-import getUserPosts from "../posts/user-posts.action";
+import getUserPosts from "./user-posts.action";
 
 const userRoutes = router => {
   router.get("/users/:id", getUser);

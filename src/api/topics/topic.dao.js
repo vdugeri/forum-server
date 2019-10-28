@@ -1,9 +1,19 @@
+import mongoose from "mongoose";
+
 import TopicModel from "./topic.model";
+import PostDao from "../posts/posts.dao";
 
 class TopicDao {
   static async allTopics() {
     try {
-      const topics = await TopicModel.find().populate("post");
+      let topics = await TopicModel.find();
+      topics = await Promise.all(
+        topics.map(async topic => {
+          const posts = await PostDao.postsByTopic(topic._id);
+          return { ...topic.toJSON(), posts };
+        })
+      );
+
       return topics;
     } catch (error) {
       const httpError = new Error(error.message);

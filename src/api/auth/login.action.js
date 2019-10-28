@@ -1,9 +1,10 @@
+import UserDao from "../users/user.dao";
 import { generateToken } from "../utils/tokens";
 
 const login = async (req, res) => {
   const { emailAddress, password } = req.body;
   try {
-    const user = UserDao.login({ emailAddress, password });
+    const user = await UserDao.login({ emailAddress, password });
     if (user) {
       const userWithToken = await generateToken(user);
       res.status(200).json({

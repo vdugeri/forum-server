@@ -56,8 +56,8 @@ class PostDao {
   static async postsByTopic(topicId) {
     try {
       const posts = await PostModel.find({
-        topic: mongoose.Types.ObjectId(topicId)
-      }).populate("author");
+        topic: topicId
+      }).populate("topic author reply");
 
       return posts;
     } catch (error) {
@@ -72,7 +72,7 @@ class PostDao {
     try {
       const posts = await PostModel.find({
         author: mongoose.Types.ObjectId(userId)
-      }).populate("topic");
+      }).populate("topic author");
       return posts;
     } catch (error) {
       const httpError = new Error(error.message);

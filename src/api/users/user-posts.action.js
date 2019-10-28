@@ -1,7 +1,7 @@
-import PostDao from "./posts.dao";
+import PostDao from "../posts/posts.dao";
 
 const getUserPosts = async (req, res) => {
-  const { userId } = req.params.userId;
+  const { userId } = req.params;
   try {
     const posts = await PostDao.userPosts(userId);
     return res.status(200).json({ posts });
