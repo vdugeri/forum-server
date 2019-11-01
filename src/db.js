@@ -4,7 +4,10 @@ import app from "./app";
 
 function startDB() {
   mongoose.set("useCreateIndex", true);
-  mongoose.connect(app.get("dbUrl"), { useNewUrlParser: true });
+  mongoose.connect(app.get("dbUrl"), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
   const db = mongoose.connection;
 

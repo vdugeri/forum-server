@@ -72,7 +72,9 @@ class PostDao {
     try {
       const posts = await PostModel.find({
         author: mongoose.Types.ObjectId(userId)
-      }).populate("topic author");
+      })
+        .sort({ created_at: "desc" })
+        .populate("topic author");
       return posts;
     } catch (error) {
       const httpError = new Error(error.message);

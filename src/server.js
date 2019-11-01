@@ -3,8 +3,7 @@ import logger from "debug";
 
 import app from "./app.js";
 import startDb from "./db";
-
-const debug = logger("http");
+import { socketEvents } from "./sockets";
 
 const port = normalizePort(process.env.PORT || "8081");
 app.set("port", port);
@@ -12,6 +11,7 @@ app.set("port", port);
 const server = http.createServer(app);
 
 startDb();
+socketEvents();
 
 server.listen(port);
 server.on("error", onError);
@@ -66,3 +66,5 @@ function onListening() {
   var bind = typeof addr === "string" ? "Pipe " + addr : "Port " + addr.port;
   console.log("Listening on " + bind);
 }
+
+export default server;
