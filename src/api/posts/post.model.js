@@ -8,7 +8,7 @@ export const PostSchema = mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "User"
     },
-    replies: [ReplySchema],
+    replies: [{ type: mongoose.Types.ObjectId, ref: "Reply" }],
     body: {
       type: String,
       required: [true, "Post body cannot be blank"],

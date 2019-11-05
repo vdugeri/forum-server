@@ -3,10 +3,10 @@ import ReplyDao from "./replies.dao";
 const createReply = async (req, res) => {
   const { author, text, post } = req.body;
   try {
-    const post = ReplyDao.createReply({ author, text, post });
-    return res.status(201).json({ reply });
+    const postWithReply = await ReplyDao.createReply({ author, text, post });
+    return res.status(201).json({ post: postWithReply });
   } catch (error) {
-    return res.status(error.code).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 

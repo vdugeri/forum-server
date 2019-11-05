@@ -15,6 +15,9 @@ const MessageSchema = mongoose.Schema(
     receiver: {
       type: mongoose.Types.ObjectId,
       ref: "User"
+    },
+    replies: {
+      type: Array
     }
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }

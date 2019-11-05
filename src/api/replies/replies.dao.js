@@ -1,40 +1,51 @@
 import mongoose from "mongoose";
 import ReplyModel from "./reply.model";
+import PostDao from "../posts/posts.dao";
 
 class ReplyDao {
   static async createReply(replyDTO) {
+    const { post } = replyDTO;
     try {
-      const reply = new ReplyModel(replyDTO);
-      const error = reply.validateSync();
-      if (error) {
-        const httpError = new Error(error.message);
-        httpError.code = 400;
+      const postToUpdate = await PostDao.getById(post);
+      if (postToUpdate) {
+        const reply = new ReplyModel(replyDTO);
+        const error = reply.validateSync();
 
-        throw httpError;
+        if (error) {
+          throw error;
+        }
+        await reply.save();
+        postToUpdate.replies.push(reply._id);
+        postToUpdate.save();
+
+        const updatedPost = await PostDao.getById(post);
+
+        return updatedPost;
       }
-
-      await reply.save();
-      return reply;
+      return null;
     } catch (error) {
-      const httpError = new Error(error.message);
-      httpError.code = error.code || 500;
-
-      throw httpError;
+      throw error;
     }
   }
 
   static async repliesForPost(postId) {
     try {
       const replies = await ReplyModel.find({
-        post: mongoose.Types.ObjectId(id)
+        post: mongoose.Types.ObjectId(postId)
       }).populate("author");
 
       return replies;
     } catch (error) {
-      const httpError = new Error(error.message);
-      httpError.code = 500;
+      throw error;
+    }
+  }
 
-      throw httpError;
+  static async findById(replyId) {
+    try {
+      const reply = await ReplyModel.findById(replyId).populate("author");
+      return reply;
+    } catch (error) {
+      throw error;
     }
   }
 }
