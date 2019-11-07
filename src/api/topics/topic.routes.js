@@ -1,6 +1,6 @@
-import createTopic from "./create.action";
-import getAllTopics from "./getAll.action";
-import getTopicPosts from "../posts/topic-posts.action";
+import createTopic from "api/topics/create.action";
+import getAllTopics from "api/topics/getAll.action";
+import getTopicPosts from "api/posts/topic-posts.action";
 
 const topicRoutes = router => {
   router.post("/topics", createTopic);

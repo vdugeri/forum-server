@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import ReplyModel from "./reply.model";
-import PostDao from "../posts/posts.dao";
+import ReplyModel from "api/replies/reply.model";
+import PostDao from "api/posts/posts.dao";
 
 class ReplyDao {
   static async createReply(replyDTO) {

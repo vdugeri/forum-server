@@ -1,5 +1,5 @@
-import getUserMessages from "./get.action";
-import sendMessage from "./create.action";
+import getUserMessages from "api/messages/get.action";
+import sendMessage from "api/messages/create.action";
 
 const messageRoutes = router => {
   router.get("/messages/:userId", getUserMessages);

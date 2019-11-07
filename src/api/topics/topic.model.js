@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { requiredStringValidator } from "../validators";
-import { PostSchema } from "../posts/post.model";
+import { requiredStringValidator } from "api/validators";
+import { PostSchema } from "api/posts/post.model";
 
 const TopicSchema = mongoose.Schema({
   name: {

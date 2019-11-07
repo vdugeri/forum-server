@@ -1,4 +1,4 @@
-import MessageDao from "./messages.dao";
+import MessageDao from "api/messages/messages.dao";
 
 const getUserMessages = async (req, res) => {
   try {

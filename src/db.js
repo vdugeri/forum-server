@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import app from "./app";
+import app from "app";
 
 function startDB() {
   mongoose.set("useCreateIndex", true);

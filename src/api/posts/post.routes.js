@@ -1,7 +1,7 @@
-import createPost from "./create.action";
-import getPost from "./get.action";
-import postReplies from "../replies/postReplies.action";
-import getAllPosts from "./getAll.action";
+import createPost from "api/posts/create.action";
+import getPost from "api/posts/get.action";
+import postReplies from "api/replies/postReplies.action";
+import getAllPosts from "api/posts/getAll.action";
 
 const postRoutes = router => {
   router.post("/posts", createPost);

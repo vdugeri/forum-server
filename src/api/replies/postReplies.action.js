@@ -1,4 +1,4 @@
-import ReplyDao from "./replies.dao";
+import ReplyDao from "api/replies/replies.dao";
 
 const getRepliesForPost = async (req, res) => {
   const { postId } = req.params;

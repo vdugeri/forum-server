@@ -1,9 +1,9 @@
 import http from "http";
 import logger from "debug";
 
-import app from "./app.js";
-import startDb from "./db";
-import { socketEvents } from "./sockets";
+import app from "app";
+import startDb from "db";
+import { socketEvents } from "sockets";
 
 const port = normalizePort(process.env.PORT || "8081");
 app.set("port", port);

@@ -1,4 +1,4 @@
-import PostDao from "./posts.dao";
+import PostDao from "api/posts/posts.dao";
 
 const getAllPosts = async (req, res) => {
   try {

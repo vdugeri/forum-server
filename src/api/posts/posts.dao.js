@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import PostModel from "./post.model";
-import ReplyDao from "../replies/replies.dao";
+import PostModel from "api/posts/post.model";
+import ReplyDao from "api/replies/replies.dao";
 
 class PostDao {
   static async getAllPosts() {

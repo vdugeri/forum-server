@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-import { ReplySchema } from "../replies/reply.model";
-import { requiredStringValidator } from "../validators";
+import { requiredStringValidator } from "api/validators";
 
 export const PostSchema = mongoose.Schema(
   {

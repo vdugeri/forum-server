@@ -2,12 +2,12 @@ import express from "express";
 
 const router = express.Router();
 
-import authRoutes from "./auth/auth.routes";
-import userRoutes from "./users/user.routes";
-import postRoutes from "./posts/post.routes";
-import topicRoutes from "./topics/topic.routes";
-import replyRoutes from "./replies/reply.routes";
-import messageRoutes from "./messages/messages.routes";
+import authRoutes from "api/auth/auth.routes";
+import userRoutes from "api/users/user.routes";
+import postRoutes from "api/posts/post.routes";
+import topicRoutes from "api/topics/topic.routes";
+import replyRoutes from "api/replies/reply.routes";
+import messageRoutes from "api/messages/messages.routes";
 
 authRoutes(router);
 userRoutes(router);

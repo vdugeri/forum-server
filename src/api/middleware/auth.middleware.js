@@ -1,4 +1,4 @@
-import { validateToken } from "../utils/tokens";
+import { validateToken } from "api/utils/tokens";
 
 export let verifyToken = async (req, res, next) => {
   const { authorization } = req.headers;

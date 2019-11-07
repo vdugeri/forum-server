@@ -1,4 +1,4 @@
-import ReplyDao from "./replies.dao";
+import ReplyDao from "api/replies/replies.dao";
 
 const createReply = async (req, res) => {
   const { author, text, post } = req.body;

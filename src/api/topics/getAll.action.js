@@ -1,4 +1,4 @@
-import TopicDao from "./topic.dao";
+import TopicDao from "api/topics/topic.dao";
 
 const getAllTopics = async (req, res) => {
   try {

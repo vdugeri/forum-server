@@ -1,5 +1,5 @@
-import MessageDao from "./messages.dao";
-import MessageEventEmitter from "./event-emitter";
+import MessageDao from "api/messages/messages.dao";
+import MessageEventEmitter from "api/messages/event-emitter";
 
 const sendMessage = async (req, res) => {
   const { sender, receiver, text } = req.body;

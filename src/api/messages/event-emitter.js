@@ -1,5 +1,5 @@
-import messageEvents from "./message-events";
-import { io } from "../../sockets";
+import messageEvents from "api/messages/message-events";
+import { io } from "sockets";
 
 class MessageEventEmitter {
   static emitMessageSent(message) {

@@ -1,6 +1,6 @@
 import "babel-polyfill";
 import { expect } from "chai";
-import User from "../../../src/api/models/user.model";
+import User from "/api/models/user.model";
 
 describe("User model", () => {
   const testUser = new User({

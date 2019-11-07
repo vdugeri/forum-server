@@ -1,5 +1,5 @@
-import UserDao from "../users/user.dao";
-import { generateToken } from "../utils/tokens";
+import UserDao from "api/users/user.dao";
+import { generateToken } from "api/utils/tokens";
 
 const signUp = async (req, res) => {
   const { password, firstName, lastName, emailAddress } = req.body;

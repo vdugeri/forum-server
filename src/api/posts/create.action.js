@@ -1,4 +1,4 @@
-import PostDao from "./posts.dao";
+import PostDao from "api/posts/posts.dao";
 
 const createPost = async (req, res) => {
   const { topicId, author, body, title } = req.body;

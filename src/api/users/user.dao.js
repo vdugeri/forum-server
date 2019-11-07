@@ -1,4 +1,4 @@
-import UserModel from "./user.model";
+import UserModel from "api/users/user.model";
 
 class UserDao {
   static async getUser(id) {

@@ -5,7 +5,7 @@ import express from "express";
 import morgan from "morgan";
 import bodyParser from "body-parser";
 import cors from "cors";
-import api from "./api";
+import api from "api";
 
 const app = express();
 app.set("apiVersion", process.env.API_VERSION || "v1");

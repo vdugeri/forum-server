@@ -1,5 +1,5 @@
-import MessageModel from "./message.model";
 import mongoose from "mongoose";
+import MessageModel from "api/messages/message.model";
 
 class MessageDao {
   static async send(messageDTO) {

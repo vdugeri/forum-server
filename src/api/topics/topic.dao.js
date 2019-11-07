@@ -1,7 +1,5 @@
-import mongoose from "mongoose";
-
-import TopicModel from "./topic.model";
-import PostDao from "../posts/posts.dao";
+import TopicModel from "api/topics/topic.model";
+import PostDao from "api/posts/posts.dao";
 
 class TopicDao {
   static async allTopics() {

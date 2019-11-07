@@ -1,4 +1,4 @@
-import TopicDao from "./topic.dao";
+import TopicDao from "api/topics/topic.dao";
 
 const createTopic = async (req, res) => {
   const { name, linkUrl, icon } = req.body;
