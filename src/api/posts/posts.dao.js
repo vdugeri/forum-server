@@ -39,22 +39,16 @@ class PostDao {
 
   static async getById(postId) {
     try {
-      const post = await PostModel.findById(postId).populate(
-        "topic author replies replies.author"
+      let post = await PostModel.findById(postId).populate(
+        "topic author replies"
       );
-      if (!post) {
-        const httpError = new Error("Post not found");
-        httpError.code = 404;
 
-        throw httpError;
-      }
+      const replies = await ReplyDao.repliesForPost(postId);
+      post.replies = replies;
 
       return post;
     } catch (error) {
-      const httpError = new Error(error.message);
-      httpError.code = error.code || 500;
-
-      throw httpError;
+      throw error;
     }
   }
 
@@ -69,13 +63,7 @@ class PostDao {
 
       posts = await Promise.all(
         posts.map(async post => {
-          const replies = await Promise.all(
-            post.replies.map(async reply => {
-              const populatedReply = await ReplyDao.findById(reply);
-
-              return populatedReply;
-            })
-          );
+          const replies = await ReplyDao.repliesForPost(post._id);
           post.replies = replies;
 
           return post;

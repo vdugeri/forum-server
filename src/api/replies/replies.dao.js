@@ -32,7 +32,9 @@ class ReplyDao {
     try {
       const replies = await ReplyModel.find({
         post: mongoose.Types.ObjectId(postId)
-      }).populate("author");
+      })
+        .sort({ created_at: "desc" })
+        .populate("author");
 
       return replies;
     } catch (error) {
