@@ -19,7 +19,7 @@ class PostDao {
 
   static async createPost(postDTO) {
     try {
-      const post = new PostModel(postDTO);
+      let post = new PostModel(postDTO);
       const error = post.validateSync();
       if (error) {
         const httpError = new Error(error.message);
@@ -28,7 +28,7 @@ class PostDao {
       }
 
       await post.save();
-      return post;
+      return await PostDao.getById(post._id);
     } catch (error) {
       const httpError = new Error(error.message);
       httpError.code = 500;
@@ -81,11 +81,21 @@ class PostDao {
 
   static async userPosts(userId) {
     try {
-      const posts = await PostModel.find({
+      let posts = await PostModel.find({
         author: mongoose.Types.ObjectId(userId)
       })
         .sort({ created_at: "desc" })
         .populate("topic author");
+
+      posts = await Promise.all(
+        posts.map(async post => {
+          const replies = await ReplyDao.repliesForPost(post._id);
+          post.replies = replies;
+
+          return post;
+        })
+      );
+
       return posts;
     } catch (error) {
       const httpError = new Error(error.message);
