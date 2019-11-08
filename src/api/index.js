@@ -8,12 +8,14 @@ import postRoutes from "api/posts/post.routes";
 import topicRoutes from "api/topics/topic.routes";
 import replyRoutes from "api/replies/reply.routes";
 import messageRoutes from "api/messages/messages.routes";
+import expertsRoutes from "api/experts/experts.routes";
 
 authRoutes(router);
-userRoutes(router);
-postRoutes(router);
-topicRoutes(router);
-replyRoutes(router);
+expertsRoutes(router);
 messageRoutes(router);
+postRoutes(router);
+replyRoutes(router);
+topicRoutes(router);
+userRoutes(router);
 
 export default router;
