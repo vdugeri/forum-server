@@ -2,10 +2,10 @@ import ExpertsDao from "api/experts/experts.dao";
 import { generateToken } from "api/utils/tokens";
 
 const expertSignIn = async (req, res) => {
-  const { email, password } = req.body;
+  const { emailAddress, password } = req.body;
 
   try {
-    const expert = await ExpertsDao.authenticate({ email, password });
+    const expert = await ExpertsDao.authenticate({ emailAddress, password });
     if (expert) {
       const expertWithToken = await generateToken(expert);
       return res.status(200).json({

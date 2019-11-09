@@ -3,6 +3,7 @@ import ExpertModel from "./experts.model";
 class ExpertsDao {
   static async createExpert(expertDTO) {
     try {
+      console.log(expertDTO);
       const expert = new ExpertModel(expertDTO);
       const error = expert.validateSync();
 
