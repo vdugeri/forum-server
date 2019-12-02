@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import { requiredStringValidator, emailAddressValidator } from "api/validators";
+import {
+  requiredStringValidator,
+  emailAddressValidator,
+  userTypeValidator
+} from "api/validators";
 
 const userSchema = mongoose.Schema(
   {
@@ -24,6 +28,23 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Email address cannot be blank"],
       validate: emailAddressValidator
+    },
+    phone: {
+      type: String
+    },
+    location: {
+      type: String
+    },
+    type: {
+      type: String,
+      default: "USER",
+      validate: userTypeValidator
+    },
+    primarySkill: {
+      type: String
+    },
+    otherSkills: {
+      type: [String]
     }
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }

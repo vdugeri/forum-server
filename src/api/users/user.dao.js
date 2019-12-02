@@ -60,7 +60,18 @@ class UserDao {
       const httpError = new Error(error.message);
       httpError.code = 500;
 
-      throw error;
+      throw httpError;
+    }
+  }
+
+  static async update(id, userDTO) {
+    try {
+      let user = await UserModel.findOneAndUpdate(id, userDTO, { new: true });
+      return user;
+    } catch (error) {
+      const httpError = new Error(error.message);
+      httpError.code = 500;
+      throw httpError;
     }
   }
 }

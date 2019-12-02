@@ -12,3 +12,12 @@ export const emailAddressValidator = {
   },
   message: props => `${props.value} must be a valid email address`
 };
+
+export const userTypeValidator = {
+  validator: val => {
+    const userTypes = new Set(["USER", "ADMIN", "EXPERT"]);
+
+    return userTypes.has(val);
+  },
+  message: props => `${props.value} must be one of USER, ADMIN or EXPERT`
+};
