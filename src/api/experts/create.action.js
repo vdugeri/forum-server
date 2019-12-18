@@ -1,3 +1,4 @@
+import gravatar from "gravatar";
 import ExpertsDao from "api/experts/experts.dao";
 import { generateToken } from "api/utils/tokens";
 import formatDBErrors from "api/utils/transform-error";
@@ -5,11 +6,17 @@ import formatDBErrors from "api/utils/transform-error";
 const createExpert = async (req, res) => {
   const { emailAddress, password, name, designation } = req.body;
   try {
+    const image = gravatar.url(
+      emailAddress,
+      { s: "200", r: "pg", d: "404" },
+      true
+    );
     const expert = await ExpertsDao.createExpert({
       emailAddress,
       password,
       name,
-      designation
+      designation,
+      image
     });
 
     if (expert) {

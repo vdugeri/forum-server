@@ -1,9 +1,23 @@
 import ExpertModel from "./experts.model";
 
 class ExpertsDao {
+  static async allExperts({ limit }) {
+    try {
+      let experts = null;
+      if (limit) {
+        experts = await ExpertModel.find().limit(+limit);
+      } else {
+        expert = await ExpertModel.find();
+      }
+
+      return experts;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
   static async createExpert(expertDTO) {
     try {
-      console.log(expertDTO);
       const expert = new ExpertModel(expertDTO);
       const error = expert.validateSync();
 

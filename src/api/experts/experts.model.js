@@ -24,6 +24,9 @@ const ExpertsSchema = mongoose.Schema(
       type: String,
       required: [true, "password cannot be blank"],
       validate: requiredStringValidator
+    },
+    image: {
+      type: String
     }
   },
   { timestamps: { createdAt: "created_at" } }
