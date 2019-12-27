@@ -43,6 +43,10 @@ class PostDao {
         "topic author replies"
       );
 
+      if (!post) {
+        return null;
+      }
+
       const replies = await ReplyDao.repliesForPost(postId);
       post.replies = replies;
 
@@ -102,6 +106,15 @@ class PostDao {
       httpError.code = 500;
 
       throw httpError;
+    }
+  }
+
+  static async deletePost(id) {
+    console.log(id);
+    try {
+      await PostModel.findOneAndDelete(id);
+    } catch (error) {
+      throw error;
     }
   }
 }
