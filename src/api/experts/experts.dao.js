@@ -7,12 +7,11 @@ class ExpertsDao {
       if (limit) {
         experts = await ExpertModel.find().limit(+limit);
       } else {
-        expert = await ExpertModel.find();
+        experts = await ExpertModel.find();
       }
 
       return experts;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }

@@ -9,6 +9,7 @@ const createPost = async (req, res) => {
       title,
       author: author.user
     });
+
     return res.status(201).json({ post });
   } catch (error) {
     return res.status(error.code).json({
