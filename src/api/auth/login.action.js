@@ -8,7 +8,7 @@ const login = async (req, res) => {
     if (user) {
       const userWithToken = await generateToken(user);
       res.status(200).json({
-        user: userWithToken
+        userWithToken
       });
     } else {
       return res.status(401).json({

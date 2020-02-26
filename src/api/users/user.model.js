@@ -45,6 +45,10 @@ const userSchema = mongoose.Schema(
     },
     otherSkills: {
       type: [String]
+    },
+    isAdmin: {
+      type: Boolean,
+      defaultValue: false
     }
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
